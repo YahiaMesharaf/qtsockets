@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include "myclient.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,10 +17,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 private slots:
-    void on_onoffButton_clicked();
 
+    void on_connButton_clicked();
 
 private:
     Ui::MainWindow *ui;
+    MyClient *client;
 };
 #endif // MAINWINDOW_H

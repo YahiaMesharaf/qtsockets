@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -14,8 +15,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_onoffButton_clicked()
+void MainWindow::on_connButton_clicked()
 {
-    ui->onoffButton->setText("oii");
-    std::cout<<"hii"<< "\n";
+    client = new MyClient(this);
+    client->ip = ui->ipEdit->text();
+    client->port = ui->portEdit->text();
+    client->doConnect(ui->messageEdit->text());
 }
