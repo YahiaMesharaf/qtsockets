@@ -13,6 +13,7 @@ class MyServer : public QObject
     Q_OBJECT
 public:
     explicit MyServer(QObject *parent = 0);
+    const int LED = 0;
 
 signals:
 

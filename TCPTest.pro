@@ -2,6 +2,7 @@ QT       += core gui
 QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+LIBS += -L/usr/local/include -lwiringPi
 
 CONFIG += c++11
 #CONFIG += console

@@ -7,10 +7,10 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
-    //MyServer mServer;
+    QCoreApplication a(argc, argv);
+    //MainWindow w;
+    //w.show();
+    MyServer mServer;
 
     return a.exec();
 }

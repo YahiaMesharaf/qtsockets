@@ -1,6 +1,11 @@
 // myserver.cpp
 
 #include "myserver.h"
+extern "C" {
+#include <wiringPi.h>
+}
+#include <stdio.h>
+#include <stdlib.h>
 
 MyServer::MyServer(QObject *parent) :
     QObject(parent)
@@ -9,6 +14,8 @@ MyServer::MyServer(QObject *parent) :
 
     connect(server, SIGNAL(newConnection()), this, SLOT(newConnection()));
 
+    wiringPiSetup();
+    pinMode(LED, OUTPUT);
     if(!server->listen(QHostAddress::Any, 1234))
     {
         qDebug() << "Server could not start!";
@@ -52,6 +59,10 @@ void MyServer::readyRead()
 
     // read the data from the socket
     qDebug() << message;
-
+    if(message == "on"){
+	digitalWrite (LED, HIGH) ;
+    }else if(message == "off"){
+	digitalWrite (LED, LOW) ;
+    }
     socket->write("Server read: " + message);
 }
